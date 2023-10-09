@@ -19,7 +19,6 @@ function onFormSubmit(e) {
 function onFormInput(e) {
   let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
   persistedFilters = persistedFilters ? JSON.parse(persistedFilters) : {};
-  console.log(localStorage.getItem(LOCALSTORAGE_KEY));
   persistedFilters[e.target.name] = e.target.value;
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(persistedFilters));
 }
