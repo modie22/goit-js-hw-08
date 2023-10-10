@@ -2,7 +2,6 @@ import throttle from 'lodash.throttle';
 
 const LOCALSTORAGE_KEY = 'selectedFilters';
 const formEl = document.querySelector('.feedback-form');
-
 initForm();
 
 formEl.addEventListener('submit', onFormSubmit);
@@ -11,7 +10,9 @@ formEl.addEventListener('input', throttle(onFormInput, 500));
 function onFormSubmit(e) {
   e.preventDefault();
   const formData = new FormData(formEl);
-  formData.forEach((value, name) => console.log(value, name));
+  const textarea = {};
+  formData.forEach((value, name) => Object.assign(textarea,{[name]:value}));
+  console.log(textarea);
   e.currentTarget.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
 }
